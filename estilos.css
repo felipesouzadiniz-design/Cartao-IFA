@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .cabecalho {
@@ -14,10 +15,19 @@
 .cartao {
     width: 260px;
     height: 200px;
+    perspective: 1200px;
+}
+
+.cartao-interno,
+.cartao-frente,
+.cartao-verso {
+    width: 100%;
+    height: 100%;
 }
 
 .cartao-imagem {
     width: 100%;
+    display: block;
 }
 
 body {
@@ -52,6 +62,8 @@ footer {
 
 .cartao-interno {
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
@@ -60,11 +72,20 @@ footer {
     transform: rotateY(180deg);
 }
 
-.cartao-frente, .cartao-verso {
+.cartao-frente,
+.cartao-verso {
     position: absolute;
+    inset: 0;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     backface-visibility: hidden;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    text-align: center;
 }
 
 .cartao-verso {
